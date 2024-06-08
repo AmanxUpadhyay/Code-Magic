@@ -22,7 +22,7 @@
     />
     <meta
       property="og:image"
-      content="https://nakam360.netlify.app/src/Assets/Images/open-graph.webp"
+      content="https://github-production-user-asset-6210df.s3.amazonaws.com/80192140/277101609-8a34c60a-4e79-4e29-beb0-7aabcea8fd58.png"
     />
 
     <!-- Twitter Meta Tags -->
@@ -36,7 +36,7 @@
     />
     <meta
       name="twitter:image"
-      content="https://nakam360.netlify.app/src/Assets/Images/open-graph.webp"
+      content="https://github-production-user-asset-6210df.s3.amazonaws.com/80192140/277101609-8a34c60a-4e79-4e29-beb0-7aabcea8fd58.png"
     />
 
     <!-- Meta Tags Generated via https://www.opengraph.xyz -->
@@ -313,6 +313,7 @@
               </li>
             </ul>
           </li>
+
           <li id="random" class="dropdown">
             <div>
               <div>
@@ -345,6 +346,53 @@
                 <span class="tooltip">
                   Convert Your Image to Character Art
                 </span>
+              </li>
+              <li data-gen="scroll">
+                <iconify-icon
+                  inline
+                  icon="ph:mouse-scroll"
+                  style="color: white"
+                  width="20"
+                  height="20"
+                ></iconify-icon>
+                <span>Custom ScrollBar</span>
+                <span class="tooltip"
+                  >Change the color and style of the scrollbar</span
+                >
+              </li>
+            </ul>
+          </li>
+
+          <li id="layout-generator" class="dropdown">
+            <div>
+              <div>
+                <iconify-icon
+                  inline
+                  icon="ph:layout"
+                  style="color: white"
+                  width="20"
+                  height="20"
+                ></iconify-icon>
+                <span>Layout Generators</span>
+              </div>
+              <iconify-icon
+                inline
+                icon="material-symbols:arrow-drop-down-rounded"
+                style="color: white"
+                width="20"
+              ></iconify-icon>
+            </div>
+            <ul>
+              <li data-gen="grid-generators">
+                <iconify-icon
+                  inline
+                  icon="ep:grid"
+                  style="color: white"
+                  width="20"
+                  height="20"
+                ></iconify-icon>
+                <span>CSS Grid Generator</span>
+                <span class="tooltip"> Get styling for css grid </span>
               </li>
             </ul>
           </li>
@@ -412,6 +460,9 @@
         <div class="generators">
           <!-- Pic Text -->
           <div data-content="pic-text">
+            <div class="generator-tool-title">
+              <h1>Pic Text</h1>
+            </div>
             <label for="pic-text-file">
               <input type="file" id="pic-text-file" required />
             </label>
@@ -424,6 +475,9 @@
 
           <!-- Gradient Text -->
           <div data-content="gradient-text">
+            <div class="generator-tool-title">
+              <h1>Gradient Text</h1>
+            </div>
             <textarea
               id="gradient-text-text"
               placeholder="Enter the text"
@@ -496,6 +550,9 @@
 
           <!-- Gradient Border -->
           <div data-content="gradient-border">
+            <div class="generator-tool-title">
+              <h1>Gradient Border</h1>
+            </div>
             <div class="colors">
               <label for="color" class="color">
                 <input
@@ -541,19 +598,28 @@
             <div class="preview" id="gradient-border-color-preview"></div>
 
             <label class="radius" for="gradient-border-radius">
-              <input type="checkbox" id="gradient-border-radius" name="check" />
-              <span> Include Radius </span>
-              <label id="radius-input-label" for="gradient-border-input">
-                <input
-                  type="number"
-                  id="gradient-border-input"
-                  name="desired-radius"
-                  placeholder="Enter a number e.g. 50"
-                  class="toggle-radius"
-                  autofocus
-                  required
-                />
-              </label>
+              <div class="radius-input-container">
+                <div class="radius-checkbox-container">
+                  <input
+                    class="circular-checkbox"
+                    type="checkbox"
+                    id="gradient-border-radius"
+                    name="check"
+                  />
+                  <span> Include Radius </span>
+                </div>
+                <label id="radius-input-label" for="gradient-border-input">
+                  <input
+                    type="number"
+                    id="gradient-border-input"
+                    name="desired-radius"
+                    placeholder="Enter a number e.g. 50"
+                    class="toggle-radius styled-input"
+                    autofocus
+                    required
+                  />
+                </label>
+              </div>
             </label>
 
             <label id="degree">
@@ -579,6 +645,9 @@
 
           <!-- Gradient Background -->
           <div data-content="gradient-background">
+            <div class="generator-tool-title">
+              <h1>Gradient Background</h1>
+            </div>
             <div class="colors">
               <label for="color" class="color">
                 <input
@@ -652,6 +721,9 @@
 
           <!-- Animation -->
           <div data-content="animation">
+            <div class="generator-tool-title">
+              <h1>Animator</h1>
+            </div>
             <div class="preview-slider"></div>
 
             <div class="animation-type">
@@ -734,6 +806,9 @@
 
           <!-- Border Radius -->
           <div data-content="border-radius">
+            <div class="generator-tool-title">
+              <h1>Border Radius</h1>
+            </div>
             <div class="border-radius-preview-box">
               <div class="preview"></div>
               <div class="border-range-inputs">
@@ -785,6 +860,9 @@
 
           <!-- Box Shadow -->
           <div data-content="box-shadow">
+            <div class="generator-tool-title">
+              <h1>Box Shadow</h1>
+            </div>
             <div class="preview-slider"></div>
 
             <div class="colors">
@@ -874,6 +952,9 @@
 
           <!-- Text Shadow Generator -->
           <div data-content="text-shadow">
+            <div class="generator-tool-title">
+              <h1>Text Shadow</h1>
+            </div>
             <div class="preview-slider"></div>
 
             <textarea
@@ -954,6 +1035,9 @@
           <!-- Transform Generator -->
 
           <div data-content="transform">
+            <div class="generator-tool-title">
+              <h1>Transform</h1>
+            </div>
             <div class="preview-slider"></div>
 
             <div class="transform-type">
@@ -1032,6 +1116,9 @@
 
           <!-- Input Type Range Generator -->
           <div data-content="input-range">
+            <div class="generator-tool-title">
+              <h1>Input Range</h1>
+            </div>
             <label for="preview-range">
               <p>Preview</p>
               <input type="range" min="3" max="20" name="" id="preview-range" />
@@ -1130,46 +1217,62 @@
             </div>
 
             <!-- Border Radius for Tracks and Thumbs -->
+
             <div class="radius">
               <label for="input-range-thumb-radius">
-                <input
-                  type="checkbox"
-                  id="input-range-thumb-radius"
-                  name="check"
-                  class="input-range-inputs"
-                />
-                <span> Include Thumb Radius </span>
-                <label id="radius-input-label" for="input-range-thumb-input">
-                  <input
-                    type="number"
-                    id="input-range-thumb-input"
-                    name="desired-radius"
-                    class="toggle-radius input-range-inputs"
-                    placeholder="Enter a number e.g. 50"
-                    autofocus
-                    required
-                  />
-                </label>
+                <div class="input-range-container">
+                  <div class="checkbox-title">
+                    <input
+                      type="checkbox"
+                      id="input-range-thumb-radius"
+                      name="check"
+                      class="input-range-inputs circular-checkbox"
+                    />
+
+                    <span> Include Thumb Radius </span>
+                  </div>
+
+                  <label id="radius-input-label" for="input-range-thumb-input">
+                    <input
+                      type="number"
+                      min="1"
+                      max="120"
+                      id="input-range-thumb-input"
+                      name="desired-radius"
+                      class="toggle-radius input-range-inputs"
+                      placeholder="Enter a number e.g. 50"
+                      autofocus
+                      required
+                    />
+                  </label>
+                </div>
               </label>
               <label for="input-range-track-radius">
-                <input
-                  type="checkbox"
-                  id="input-range-track-radius"
-                  name="check"
-                  class="input-range-inputs"
-                />
-                <span> Include Track Radius </span>
-                <label id="radius-input-label" for="input-range-track-input">
-                  <input
-                    type="number"
-                    id="input-range-track-input"
-                    name="desired-radius"
-                    class="toggle-radius input-range-inputs"
-                    placeholder="Enter a number e.g. 50"
-                    autofocus
-                    required
-                  />
-                </label>
+                <div class="input-range-container">
+                  <div class="checkbox-title">
+                    <input
+                      type="checkbox"
+                      id="input-range-track-radius"
+                      name="check"
+                      class="input-range-inputs circular-checkbox"
+                    />
+
+                    <span> Include Track Radius </span>
+                  </div>
+                  <label id="radius-input-label" for="input-range-track-input">
+                    <input
+                      type="number"
+                      min="1"
+                      max="120"
+                      id="input-range-track-input"
+                      name="desired-radius"
+                      class="toggle-radius input-range-inputs"
+                      placeholder="Enter a number e.g. 50"
+                      autofocus
+                      required
+                    />
+                  </label>
+                </div>
               </label>
             </div>
 
@@ -1192,7 +1295,7 @@
                   <div class="dropdown-item" data-download="input-range-code">
                     <iconify-icon
                       inline
-                      icon="bx:code-alt"
+                      icon="skill-icons:css"
                       style="color: white; margin-right: 5px"
                       width="20"
                     ></iconify-icon>
@@ -1204,7 +1307,7 @@
                   >
                     <iconify-icon
                       inline
-                      icon="bx:code-alt"
+                      icon="devicon:tailwindcss"
                       style="color: white; margin-right: 5px"
                       width="20"
                     ></iconify-icon>
@@ -1215,8 +1318,191 @@
             </div>
           </div>
           <!-- End of Input Type Range Generator -->
+
+          <!-- Custom Scroll Generator -->
+          <div data-content="scroll">
+            <div class="input">
+              <label for="color" class="color">
+                Track Color
+                <input
+                  type="text"
+                  data-coloris
+                  placeholder="Tap to pick a color"
+                  id="scroll-color1"
+                  class="scroll-inputs"
+                />
+              </label>
+
+              <label for="color" class="color">
+                Thumb Color
+                <input
+                  type="text"
+                  data-coloris
+                  placeholder="Tap to pick a color"
+                  id="scroll-color2"
+                  class="scroll-inputs"
+                />
+              </label>
+
+              <label for="color" class="color">
+                Thumb Color on Hover
+                <input
+                  type="text"
+                  data-coloris
+                  placeholder="Tap to pick a color"
+                  id="scroll-color3"
+                  class="scroll-inputs"
+                />
+              </label>
+
+              <label for="width">
+                Width
+                <input
+                  type="number"
+                  id="scroll-width"
+                  name="desired-radius"
+                  min="0"
+                  max="10"
+                  placeholder="Enter a number e.g. 50"
+                  class="styled-input scroll-inputs"
+                  autofocus
+                  required
+                />
+              </label>
+            </div>
+
+            <!-- Copy Code Button -->
+            <div class="btn-container">
+              <div class="reset" data-reset="scroll">Reset</div>
+              <div class="btn-dropdown-container">
+                <button class="btn" data-css-tailwind="scroll-code">
+                  Copy Code
+                  <iconify-icon
+                    inline
+                    icon="material-symbols:arrow-drop-down-rounded"
+                    style="color: white"
+                    width="20"
+                  ></iconify-icon>
+                </button>
+                <div class="css-tailwind" data-dropdown="scroll-dropdown2">
+                  <!-- dropdown elements go here -->
+
+                  <div class="dropdown-item" data-download="scroll-code">
+                    <iconify-icon
+                      inline
+                      icon="skill-icons:css"
+                      style="color: white; margin-right: 5px"
+                      width="20"
+                    ></iconify-icon>
+                    <span> Get CSS Code </span>
+                  </div>
+                  <!-- <div
+                    class="dropdown-item"
+                    data-download="scroll-tailwind"
+                  >
+                    <iconify-icon
+                      inline
+                      icon="devicon:tailwindcss"
+                      style="color: white; margin-right: 5px"
+                      width="20"
+                    ></iconify-icon>
+                    <span> Get Tailwind </span>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <!-- End of Input for Generators -->
+
+        <!-- Grid Generator -->
+        <div data-content="grid-generators" class="grid-generators">
+          <div
+            id="grid-generators-preview"
+            class="grid-generators-preview"
+          ></div>
+          <div class="grid-input-containers">
+            <input
+              type="number"
+              name="grid-generators-rows"
+              id="grid-generators-rows"
+              placeholder="Rows"
+              class="grid-generators-inputs row full-page"
+              min="0"
+              max="100"
+            />
+            <input
+              type="number"
+              name="grid-generator-columns"
+              id="grid-generators-columns"
+              class="grid-generators-inputs column full-page"
+              placeholder="Columns"
+              min="0"
+              max="100"
+            />
+            <input
+              type="number"
+              name="grid-generators-row-gaps"
+              id="grid-generators-row-gaps"
+              placeholder="Row gap"
+              class="grid-generators-inputs row-gaps full-page"
+              min="0"
+              max="100"
+            />
+            <input
+              type="number"
+              name="grid-generators-column-gaps"
+              id="grid-generators-column-gaps"
+              placeholder="Column gap"
+              class="grid-generators-inputs column-gaps full-page"
+              min="0"
+              max="100"
+            />
+          </div>
+          <div class="btn-container">
+            <div class="reset" data-reset="grid-generators">Reset</div>
+            <div class="btn-dropdown-container">
+              <button class="btn" data-css-tailwind="grid-generators-code">
+                Copy Code
+                <iconify-icon
+                  inline
+                  icon="material-symbols:arrow-drop-down-rounded"
+                  style="color: white"
+                  width="20"
+                ></iconify-icon>
+              </button>
+              <div
+                class="css-tailwind"
+                data-dropdown="grid-generators-dropdown2"
+              >
+                <!-- dropdown elements go here -->
+
+                <div class="dropdown-item" data-download="grid-generators-code">
+                  <iconify-icon
+                    inline
+                    icon="skill-icons:css"
+                    style="color: white; margin-right: 5px"
+                    width="20"
+                  ></iconify-icon>
+                  <span> Get CSS Code </span>
+                </div>
+                <div
+                  class="dropdown-item"
+                  data-download="grid-generators-tailwind"
+                >
+                  <iconify-icon
+                    inline
+                    icon="devicon:tailwindcss"
+                    style="color: white; margin-right: 5px"
+                    width="20"
+                  ></iconify-icon>
+                  <span> Get Tailwind </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End of Grid generator -->
 
         <!-- Result from Generators -->
         <div class="side-results">
@@ -1287,7 +1573,7 @@
                   <div class="dropdown-item" data-download="pic-text-code">
                     <iconify-icon
                       inline
-                      icon="bx:code-alt"
+                      icon="skill-icons:css"
                       style="color: white; margin-right: 5px"
                       width="20"
                     ></iconify-icon>
@@ -1296,7 +1582,7 @@
                   <div class="dropdown-item" data-download="pic-text-tailwind">
                     <iconify-icon
                       inline
-                      icon="bx:code-alt"
+                      icon="devicon:tailwindcss"
                       style="color: white; margin-right: 5px"
                       width="20"
                     ></iconify-icon>
@@ -1364,7 +1650,7 @@
                   <div class="dropdown-item" data-download="gradient-text-code">
                     <iconify-icon
                       inline
-                      icon="bx:code-alt"
+                      icon="skill-icons:css"
                       style="color: white; margin-right: 5px"
                       width="20"
                     ></iconify-icon>
@@ -1376,7 +1662,7 @@
                   >
                     <iconify-icon
                       inline
-                      icon="bx:code-alt"
+                      icon="devicon:tailwindcss"
                       style="color: white; margin-right: 5px"
                       width="20"
                     ></iconify-icon>
@@ -1408,7 +1694,7 @@
                 <div class="dropdown-item" data-download="gradient-border-code">
                   <iconify-icon
                     inline
-                    icon="bx:code-alt"
+                    icon="skill-icons:css"
                     style="color: white; margin-right: 5px"
                     width="20"
                   ></iconify-icon>
@@ -1420,7 +1706,7 @@
                 >
                   <iconify-icon
                     inline
-                    icon="bx:code-alt"
+                    icon="devicon:tailwindcss"
                     style="color: white; margin-right: 5px"
                     width="20"
                   ></iconify-icon>
@@ -1456,7 +1742,7 @@
                 >
                   <iconify-icon
                     inline
-                    icon="bx:code-alt"
+                    icon="skill-icons:css"
                     style="color: white; margin-right: 5px"
                     width="20"
                   ></iconify-icon>
@@ -1469,7 +1755,7 @@
                   >
                     <iconify-icon
                       inline
-                      icon="bx:code-alt"
+                      icon="devicon:tailwindcss"
                       style="color: white; margin-right: 5px"
                       width="20"
                     ></iconify-icon>
@@ -1500,7 +1786,7 @@
                 <div class="dropdown-item" data-download="animation-code">
                   <iconify-icon
                     inline
-                    icon="bx:code-alt"
+                    icon="skill-icons:css"
                     style="color: white; margin-right: 5px"
                     width="20"
                   ></iconify-icon>
@@ -1509,7 +1795,7 @@
                 <div class="dropdown-item" data-download="animation-tailwind">
                   <iconify-icon
                     inline
-                    icon="bx:code-alt"
+                    icon="devicon:tailwindcss"
                     style="color: white; margin-right: 5px"
                     width="20"
                   ></iconify-icon>
@@ -1539,7 +1825,7 @@
                 <div class="dropdown-item" data-download="border-radius-code">
                   <iconify-icon
                     inline
-                    icon="bx:code-alt"
+                    icon="skill-icons:css"
                     style="color: white; margin-right: 5px"
                     width="20"
                   ></iconify-icon>
@@ -1551,7 +1837,7 @@
                 >
                   <iconify-icon
                     inline
-                    icon="bx:code-alt"
+                    icon="devicon:tailwindcss"
                     style="color: white; margin-right: 5px"
                     width="20"
                   ></iconify-icon>
@@ -1581,7 +1867,7 @@
                 <div class="dropdown-item" data-download="box-shadow-code">
                   <iconify-icon
                     inline
-                    icon="bx:code-alt"
+                    icon="skill-icons:css"
                     style="color: white; margin-right: 5px"
                     width="20"
                   ></iconify-icon>
@@ -1590,7 +1876,7 @@
                 <div class="dropdown-item" data-download="box-shadow-tailwind">
                   <iconify-icon
                     inline
-                    icon="bx:code-alt"
+                    icon="devicon:tailwindcss"
                     style="color: white; margin-right: 5px"
                     width="20"
                   ></iconify-icon>
@@ -1620,7 +1906,7 @@
                 <div class="dropdown-item" data-download="transform-code">
                   <iconify-icon
                     inline
-                    icon="bx:code-alt"
+                    icon="skill-icons:css"
                     style="color: white; margin-right: 5px"
                     width="20"
                   ></iconify-icon>
@@ -1629,7 +1915,7 @@
                 <div class="dropdown-item" data-download="transform-tailwind">
                   <iconify-icon
                     inline
-                    icon="bx:code-alt"
+                    icon="devicon:tailwindcss"
                     style="color: white; margin-right: 5px"
                     width="20"
                   ></iconify-icon>
@@ -1693,7 +1979,7 @@
                   <div class="dropdown-item" data-download="text-shadow-code">
                     <iconify-icon
                       inline
-                      icon="bx:code-alt"
+                      icon="skill-icons:css"
                       style="color: white; margin-right: 5px"
                       width="20"
                     ></iconify-icon>
@@ -1705,7 +1991,7 @@
                   >
                     <iconify-icon
                       inline
-                      icon="bx:code-alt"
+                      icon="devicon:tailwindcss"
                       style="color: white; margin-right: 5px"
                       width="20"
                     ></iconify-icon>

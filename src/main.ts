@@ -24,6 +24,7 @@ import {
 import {rangeGenerator} from './pages/input-range';
 import {picTextGenerator} from './pages/pic-text';
 import {addTextShadowListener, textShadowGenerator} from './pages/text-shadow';
+import {gridGenerator} from './pages/grid-generator';
 
 // Packages
 import * as FilePond from 'filepond';
@@ -44,6 +45,7 @@ import {
   getResultPage,
 } from './lib/getElements';
 import {addTransformListener, transformGenerator} from './pages/transform';
+import {scrollGenerator} from './pages/scroll';
 
 FilePond.registerPlugin(
   FilePondPluginImagePreview,
@@ -293,6 +295,8 @@ function showContent(attribute: string, display: Display): void {
   attribute === 'gradient-background' && addGradientBackgroundListener();
   attribute === 'animation' && addAnimationListener();
   attribute === 'transform' && addTransformListener();
+  attribute === 'grid-generators' && gridGenerator();
+  attribute === 'scroll' && scrollGenerator();
 }
 
 /**
@@ -464,7 +468,49 @@ getRadioButtonSetElement.forEach((radioButton: HTMLInputElement) => {
 
 // configuring dropdown menu
 dropDownElements.forEach((dropDown) => {
+  // add click event listener to the dropdown parent element
+  dropDown.addEventListener('click', (e) => {
+    e.stopPropagation();
+
+    const listElement = dropDown.lastElementChild as HTMLElement;
+    const iconElement =
+      listElement?.parentElement?.firstElementChild?.lastElementChild;
+    if (listElement.id === 'showList') {
+      listElement.id = '';
+
+      // Toggle arrow icon to downwards
+      if (iconElement) {
+        iconElement.setAttribute(
+          'icon',
+          'material-symbols:arrow-drop-down-rounded'
+        );
+      }
+      return;
+    }
+
+    // clear other open dropdown menus
+    dropDownElements.forEach((dropdown) => {
+      const listElement = dropdown.lastElementChild as HTMLElement;
+      listElement.id = '';
+    });
+
+    listElement.id = 'showList';
+
+    // Toggle arrow icon to upwards
+    if (iconElement) {
+      iconElement.setAttribute(
+        'icon',
+        'material-symbols:arrow-drop-up-rounded'
+      );
+    }
+  });
+
   const listElement = dropDown.lastElementChild as HTMLElement;
+
+  // Prevent the click event on subitems from propagating to the parent dropdown
+  listElement.addEventListener('click', (e) => {
+    e.stopPropagation();
+  });
 
   // loop through children of dropdown and add event listener to each child
   for (let i = 0; i < listElement.children.length; i++) {

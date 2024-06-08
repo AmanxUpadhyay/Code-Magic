@@ -177,3 +177,30 @@ export const getDegreeSpanElement = (attribute: string) =>
   document.querySelector(
     `[data-content=${attribute}] .unit-display`
   ) as HTMLSpanElement;
+
+export const getNumberOfColumns = (attribute: string): HTMLInputElement =>
+  document.getElementById(`${attribute}-columns`) as HTMLInputElement;
+
+export const getNumberOfRows = (attribute: string): HTMLInputElement =>
+  document.getElementById(`${attribute}-rows`) as HTMLInputElement;
+
+export const getRowGap = (attribute: string): HTMLInputElement =>
+  document.getElementById(`${attribute}-row-gaps`) as HTMLInputElement;
+
+export const getColumnGap = (attribute: string): HTMLInputElement =>
+  document.getElementById(`${attribute}-column-gaps`) as HTMLInputElement;
+
+export const getGridFields = (
+  attribute: string,
+  types: string[]
+): HTMLSpanElement[] =>
+  types.reduce(
+    (acc, type) => [
+      ...acc,
+      document.getElementById(`${attribute}-${type}`) as HTMLInputElement,
+    ],
+    []
+  );
+
+export const getGridPreview = (attribute: string): HTMLElement =>
+  document.getElementById(`${attribute}-preview`) as HTMLElement;

@@ -5,6 +5,12 @@ import copy from 'copy-to-clipboard';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import {Eggy} from '@s-r0/eggy-js';
+import {
+  getColumnGap,
+  getNumberOfColumns,
+  getNumberOfRows,
+  getRowGap,
+} from '../getElements';
 
 export function createDownloadLink(fileName: string, url: string) {
   const link = document.createElement('a');
@@ -163,6 +169,20 @@ export const actOnGenerator = (
       }
       `;
       break;
+    case 'grid-generators':
+      element = outputElement.style;
+      codeToCopy = `
+      div {
+      height: 300px;
+      width: 300px;
+      display:${element.display},
+      grid-template-rows:${element.gridTemplateRows},
+      grid-template-columns:${element.gridTemplateColumns},
+      row-gap:${element.rowGap},
+      column-gap:${element.columnGap}
+    }
+    `;
+      break;
     default:
       codeToCopy = `
           Couldn't copy, please try again :(
@@ -258,6 +278,104 @@ function convertLinearGradientToTailwind(gradient: string): string {
   }
 }
 
+function convertInputRangeStylesToTailwind(element: CSSStyleDeclaration) {
+  const tailwindClasses = [];
+
+  tailwindClasses.push(`appearance-none`);
+
+  // Track height
+  if (element.getPropertyValue('--preview-track-height')) {
+    const trackHeight = element.getPropertyValue('--preview-track-height');
+
+    tailwindClasses.push(
+      `[&::-webkit-slider-runnable-track]:h-[${trackHeight}] h-[${trackHeight}]`
+    );
+  }
+
+  // Track width
+  if (element.getPropertyValue('--preview-track-width')) {
+    const trackWidth = element.getPropertyValue('--preview-track-width');
+
+    tailwindClasses.push(
+      `[&::-webkit-slider-runnable-track]:w-[${trackWidth}] w-[${trackWidth}]`
+    );
+  }
+
+  // Track radius
+  if (element.getPropertyValue('--preview-track-radius')) {
+    const trackRadius = element.getPropertyValue('--preview-track-radius');
+
+    tailwindClasses.push(
+      `[&::-webkit-slider-runnable-track]:rounded-[${trackRadius}] rounded-[${trackRadius}]`
+    );
+  }
+
+  // Thumb height
+  if (element.getPropertyValue('--preview-thumb-height')) {
+    const thumbHeight = element.getPropertyValue('--preview-thumb-height');
+
+    tailwindClasses.push(
+      `[&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:mt-[-3.2px] [&::-webkit-slider-thumb]:h-[${thumbHeight}] [&::-moz-range-thumb]:h-[${thumbHeight}]`
+    );
+  }
+
+  // Thumb width
+  if (element.getPropertyValue('--preview-thumb-width')) {
+    const thumbWidth = element.getPropertyValue('--preview-thumb-width');
+
+    tailwindClasses.push(
+      `[&::-webkit-slider-thumb]:w-[${thumbWidth}] [&::-moz-range-thumb]:w-[${thumbWidth}]`
+    );
+  }
+
+  // Thumb radius
+  if (element.getPropertyValue('--preview-thumb-radius')) {
+    const thumbRadius = element.getPropertyValue('--preview-thumb-radius');
+
+    tailwindClasses.push(
+      `[&::-webkit-slider-thumb]:rounded-[${thumbRadius}] [&::-moz-range-thumb]:rounded-[${thumbRadius}]`
+    );
+  }
+
+  // Thumb color
+  if (element.getPropertyValue('--preview-thumb-color')) {
+    const thumbColor = element.getPropertyValue('--preview-thumb-color');
+
+    tailwindClasses.push(
+      `[&::-webkit-slider-thumb]:bg-[${thumbColor}] [&::-moz-range-thumb]:bg-[${thumbColor}]`
+    );
+  }
+
+  // Track color
+  if (element.getPropertyValue('--preview-track-color')) {
+    const trackColor = element.getPropertyValue('--preview-track-color');
+
+    tailwindClasses.push(
+      `[&::-webkit-slider-runnable-track]:bg-[${trackColor}] bg-[${trackColor}]`
+    );
+  }
+
+  return tailwindClasses.join(' ');
+}
+
+function convertGridSylesToTailwind(attribute: string) {
+  let result = 'grid';
+  const noOfColumns = getNumberOfColumns(attribute).value;
+  const noOfRows = getNumberOfRows(attribute).value;
+  const columnGapValue = getColumnGap(attribute).value;
+  const rowGapValue = getRowGap(attribute).value;
+  const rows = parseInt(noOfRows !== '' ? noOfRows : '0');
+  const columns = parseInt(noOfColumns !== '' ? noOfColumns : '0');
+  const rowGap = parseInt(rowGapValue !== '' ? rowGapValue : '0');
+  const columnGap = parseInt(columnGapValue !== '' ? columnGapValue : '0');
+  if (rows > 0 || columns > 0 || rowGap > 0 || columnGap > 0) {
+    result = `${result} grid-rows-${rows} grid-cols-${columns} gap-x-${rowGap} gap-y-${columnGap}`;
+  } else {
+    result = `${result} gap-x-0 gap-y-0`;
+  }
+  return result;
+}
+
 /**
  * what should copy when the copy Tailwind button is clicked
  *
@@ -298,10 +416,13 @@ export const actOnTailwindGenerator = (
       codeToCopy = `shadow-[${element.boxShadow.replace(/ /g, '_')}]`;
       break;
     case 'text-shadow':
-      codeToCopy = ``;
+      codeToCopy = `[text-shadow:${element.textShadow.replace(/[\s,]/g, '_')}]`;
       break;
     case 'input-range':
-      codeToCopy = ``;
+      codeToCopy = `${convertInputRangeStylesToTailwind(element)}`;
+      break;
+    case 'grid-generators':
+      codeToCopy = `${convertGridSylesToTailwind(attribute)}`;
       break;
     default:
       codeToCopy = `

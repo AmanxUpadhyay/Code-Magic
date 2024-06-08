@@ -18,6 +18,7 @@ import {
   getCssOrTailwindDropdown,
   getPngOrSvgButton,
   getPngOrSvgDropdown,
+  getOpenSideBarButton,
 } from '../lib/getElements';
 import {
   copyCSSCodeToClipboard,
@@ -96,6 +97,7 @@ export function textShadowGenerator(
   const resultPage = getResultPage();
 
   if (getInputElement.value.length === 0) {
+    getOpenSideBarButton().style.display = 'none';
     triggerEmptyAnimation(getInputElement);
     return;
   }
@@ -168,12 +170,14 @@ export function addTextShadowListener(): void {
     if (idx < 3) {
       allTextShadowInputsFields[idx].textContent = `${input.value}px`;
     }
+
     getInputElement.addEventListener('input', () => {
       preview.innerText = getInputElement.value;
       preview.style.textShadow = getShadowValue();
     });
+
     input.addEventListener('input', () => {
-      if (getInputElement.value === '' || color.value === '') return;
+      if (getInputElement.value === '') return;
       preview.innerText = getInputElement.value;
       slideIn(preview, isSliderOpen);
 
@@ -242,7 +246,8 @@ getValues();
 
 // Tailwind codecopy handler
 function tailwindHandler() {
-  copyTailwindCodeToClipboard(attribute);
+  const outputElement: HTMLElement = getOutput(attribute);
+  copyTailwindCodeToClipboard(attribute, outputElement);
   showPopup(
     'Tailwind Code Copied',
     'Code has been successfully copied to clipboard',
